@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neu.entity.EventMapper">
+
+	<select id="getEventByWeek" resultType="com.neu.entity.EventInfo">
+		select * from event where
+		dates = #{d1} or dates = #{d2} or
+		dates = #{d3} or dates = #{d4} or
+		dates = #{d5}
+		or dates = #{d6} or dates = #{d7} order by day
+	</select>
+	<select id="getAllEvent" resultType="com.neu.entity.EventInfo">
+		select * from event where
+		s0to4 &lt;&gt; '-' or s4to8 &lt;&gt; '-' or s8to12 &lt;&gt; '-' or
+		s12to16 &lt;&gt; '-' or s16to20 &lt;&gt; '-' or s20to24 &lt;&gt; '-'
+		order by dates
+	</select>
+	<select id="getEventByContent" parameterType="String"
+		resultType="com.neu.entity.EventInfo">
+		select * from event where s0to4 LIKE "%"#{content}"%" or s4to8 LIKE
+		"%"#{content}"%" or s8to12 LIKE "%"#{content}"%" or
+		s12to16 LIKE "%"#{content}"%" or s16to20 LIKE "%"#{content}"%" or s20to24 LIKE "%"#{content}"%" order by dates
+	</select>
+	<update id="update1ById" parameterType="com.neu.entity.EventInfo">
+		update event set
+		s0to4=#{s0to4}
+		where id=#{id}
+	</update>
+	<update id="update2ById" parameterType="com.neu.entity.EventInfo">
+		update event set
+		s4to8=#{s4to8}
+		where id=#{id}
+	</update>
+	<update id="update3ById" parameterType="com.neu.entity.EventInfo">
+		update event set
+		s8to12=#{s8to12}
+		where id=#{id}
+	</update>
+	<update id="update4ById" parameterType="com.neu.entity.EventInfo">
+		update event set
+		s12to16=#{s12to16}
+		where id=#{id}
+	</update>
+	<update id="update5ById" parameterType="com.neu.entity.EventInfo">
+		update event set
+		s16to20=#{s16to20}
+		where id=#{id}
+	</update>
+	<update id="update6ById" parameterType="com.neu.entity.EventInfo">
+		update event set
+		s20to24=#{s20to24}
+		where id=#{id}
+	</update>
+
+</mapper>

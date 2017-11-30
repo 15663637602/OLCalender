@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neu.entity.UserMapper">
+	<sql id="seq_b_user_table">seq_b_user.nextval</sql>
+
+	<select id="B_Login" parameterType="com.neu.entity.B_UserInfo"
+		resultType="String">
+		select b_name from b_user where b_name=#{b_name} and
+		b_pass=#{b_pass}
+	</select>
+
+
+</mapper>
